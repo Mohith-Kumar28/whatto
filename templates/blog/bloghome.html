@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}bloghome{% endblock title %}
+{% block BlogActive %}active{% endblock BlogActive %}
+{% block body %}
+<h3>best things to watch blog</h3>
+
+<div class="container">
+
+  <form method="Post" action="/blog/userPost">
+   {% csrf_token %}
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" aria-describedby="title">
+  </div>
+  <div class="mb-3">
+    <label for="slug" class="form-label">Slug</label>
+    <input type="text" class="form-control" id="slug" name="slug" aria-describedby="slug">
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">Content</label>
+     <textarea class="form-control" name="content" id="content" cols="30" rows="5"></textarea>
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+ {% for post in allposts %}
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{post.author}}</strong>
+          <h3 class="mb-0">{{post.title}}</h3>
+          <div class="mb-1 text-muted">{{post.timeStamp}}</div>
+          <p class="card-text mb-auto">{{post.content| truncatechars:400}}</p>
+          <div>
+             <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">Continue reading</a>
+          </div>
+  
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+
+        </div>
+      </div>
+ {% endfor %}
+</div>
+{% endblock body %}
