@@ -13,9 +13,11 @@ def bloghome(request):
 
 def blogpost(request,slug):
     # return HttpResponse(f'this is blogpost,,{slug}')
-
+    
     # this is the place where i used slug as unique identifier, later may change to s.no
     post=Post.objects.filter(slug=slug).first()
+    
+    
     comments= BlogComment.objects.filter(post=post)
     context={'post':post, 'comments':comments, 'user':request.user}
     return render(request,'blog/blogpost.html',context)
@@ -26,7 +28,8 @@ def postComment(request):
         comment=request.POST.get("comment")
         user=request.user
         postSno=request.POST.get("postSno")
-        post=Post.objects.get(sno=postSno)
+        post=Post.objects.get(slug=postSno)
+        # post=Post.objects.get(sno=postSno)
 
         comment= BlogComment(comment=comment,user=user, post=post)
         comment.save()
@@ -37,11 +40,16 @@ def postComment(request):
 def userPost(request):
     if request.method=="POST":
         title=request.POST.get("title")
-        slug=request.POST.get("slug")
+        video=request.POST.get("video")
+        # slug=request.POST.get("slug")
+        # slug=request.slug
         content=request.POST.get("content")
         author=request.user
 
-        post= Post(title=title,slug=slug, content=content,author=author)
+        # post= Post(title=title,slug=slug, content=content,author=author)
+        post= Post(title=title,content=content,author=author,video=video)
+
         post.save()
         messages.success(request,"comment uploaded")
+  
     return redirect(f"/blog/{post.slug}") 

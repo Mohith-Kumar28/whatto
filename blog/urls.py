@@ -10,6 +10,7 @@ urlpatterns = [
 
 
     path('', views.bloghome, name='bloghome'),
-    path('<str:slug>', views.blogpost, name='home')
+    path('<int:slug>', views.blogpost, name='home')
+    # path('<str:slug>', views.blogpost, name='home')
 
 ]

@@ -3,14 +3,20 @@ from django.contrib.auth.models import User
 from django.http import request
 from django.utils.timezone import now
 
+from embed_video.fields import EmbedVideoField
+
 class Post(models.Model):
-    sno=models.AutoField(primary_key=True)
+    # sno=models.AutoField(primary_key=True)
+    video = EmbedVideoField(default='SOME STRING')   
+
     title=models.CharField(max_length=255)
     # author=models.CharField(max_length=14)
 
     author=models.ForeignKey(User, on_delete=models.CASCADE)
 
-    slug=models.CharField(max_length=130)
+
+    slug=models.AutoField(primary_key=True)
+    # slug=models.CharField(max_length=130)
 
     # timeStamp=models.DateTimeField(blank=True)
     
