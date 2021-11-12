@@ -4,5 +4,112 @@
 {% block AboutActive %}active{% endblock AboutActive %}
 
 {% block body %}
-<h3>this isss headdinggg</h3>
+
+
+<div class="container marketing">
+
+    <h2 class="my-4">About us</h2>
+    <div class="card-group">
+        <div class="card px-5 py-4">
+            <img src="/static/img/profile2.svg" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title ">Mohith</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content.This is a wider card with supporting text below as a natural lead-in to additional content.
+                </p>
+
+            </div>
+        </div>
+        <div class="card px-5 py-4">
+            <img src="/static/img/profile1.svg" class="card-img-top" alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title">Nikhil</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content.This card has supporting text below as a natural lead-in to additional content.</p>
+
+            </div>
+        </div>
+        <div class="card px-5 py-4">
+            <img src="/static/img/profile2.svg" class="card-img-top " alt="...">
+            <div class="card-body text-center">
+                <h5 class="card-title">Varun</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content.This is a wider card with supporting text below as a natural lead-in to additional content.
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 my-auto">
+            <h2 class="featurette-heading">We built this because we want to make a plarform where everyone can share
+                their favourite videos <span class="text-muted">It’ll blow your mind.</span></h2>
+            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose
+                here.</p>
+        </div>
+        <div class="col-md-5 my-4 p-0 ps-5">
+            {% comment %} <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                    dy=".3em">500x500</text>
+            </svg> {% endcomment %}
+            <img src="/static/img/uploadvideo.svg" width="350" alt="">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette my-2">
+        <div class="col-md-7 order-md-2 my-auto">
+            <h2 class="featurette-heading">We used Django Python framework for backend <span class="text-muted">and
+                    Bootstrap for frontend</span></h2>
+            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this
+                layout would work with some actual real-world content in place.</p>
+        </div>
+        <div class="col-md-5 order-md-1 my-4">
+            <img src="/static/img/code.svg" width="400" alt="">
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 my-auto">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
+                intended to be actually read, simply here to give you a better view of what this would look like with
+                some actual content. Your content.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa"
+                    dy=".3em">500x500</text>
+            </svg>
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+</div>
+
+
+
 {% endblock body %}

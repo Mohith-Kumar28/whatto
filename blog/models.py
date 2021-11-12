@@ -11,18 +11,20 @@ class Post(models.Model):
 
     title=models.CharField(max_length=255)
     # author=models.CharField(max_length=14)
-
+    votes=models.IntegerField(default=0)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
-
-
     slug=models.AutoField(primary_key=True)
     # slug=models.CharField(max_length=130)
 
     # timeStamp=models.DateTimeField(blank=True)
-    
-
     timeStamp=models.DateTimeField(default=now)
     content=models.TextField()
+     
+    #  hereee i added likes and dislikes functionality
+
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
+    dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
+
 
     def __str__(self):
         return self.title + " by " + self.author.username

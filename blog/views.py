@@ -6,7 +6,16 @@ from django.contrib import messages
 # Create your views here.
 
 def bloghome(request):
-    allposts=Post.objects.all()
+    
+    #here i added orderby slug to apply decending order 
+  
+
+    allposts=Post.objects.all().order_by('-votes')
+    # allposts=Post.objects.all().order_by('-slug')
+    # allposts=Post.objects.extra(select={'offset': 'likes - dislikes'}).order_by('offset')
+    
+
+    # allposts=Post.objects.all()
     # print (allposts)
     context={'allposts':allposts}
     return render(request,'blog/bloghome.html',context)
@@ -53,3 +62,72 @@ def userPost(request):
         messages.success(request,"comment uploaded")
   
     return redirect(f"/blog/{post.slug}") 
+
+
+# def AddLike(request):
+def AddLike(request,slug):
+        # totalLikes=request.POST.get("totalLikes")
+        post = Post.objects.get(slug=slug)
+
+        is_dislike = False
+
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+
+        if is_dislike:
+            post.dislikes.remove(request.user)
+
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+
+        if not is_like: 
+            post.likes.add(request.user)
+            
+        if is_like:
+            post.likes.remove(request.user)
+        vote=post.likes.count() - post.dislikes.count()    
+        # print( vote ) 
+        post.votes = vote
+        post.save() 
+        # print( post.votes ) 
+        return redirect(f"/blog/")
+
+def AddDislike(request,slug):
+        post = Post.objects.get(slug=slug)
+
+        is_like = False
+
+        for like in post.likes.all():
+            if like == request.user:
+                is_like = True
+                break
+
+        if is_like:
+            post.likes.remove(request.user)
+
+        is_dislike = False
+
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
+
+        if not is_dislike: 
+            post.dislikes.add(request.user)
+        
+        if is_dislike:
+            post.dislikes.remove(request.user)
+
+        vote=post.likes.count() - post.dislikes.count()    
+        # print( vote ) 
+        post.votes = vote
+        post.save() 
+        # print( post.votes ) 
+        
+        return redirect(f"/blog/")

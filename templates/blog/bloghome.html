@@ -8,7 +8,7 @@
 
 <h3>best things to watch blog</h3>
 
-<div class="container">
+<div class="container my-4">
 
   <form method="Post" action="/blog/userPost">
    {% csrf_token %}
@@ -21,15 +21,6 @@
     <label for="video" class="form-label">video</label>
     <input type="url" class="form-control" id="video" name="video" aria-describedby="video" required>
   </div>
-    {% comment %} <div class="mb-3">
-    <label for="slug" class="form-label">Slug</label>
-    <input type="text" class="form-control" id="slug" name="slug" aria-describedby="slug">
-  </div>  {% endcomment %}
-
-   {% comment %} <div class="mb-3">
-     <input type="hidden" name="slug" value="{{post.slug}}">
-   </div> {% endcomment %}
-
   <div class="mb-3">
     <label for="content" class="form-label">Content</label>
      <textarea class="form-control" name="content" id="content" cols="30" rows="5" required></textarea>
@@ -38,8 +29,8 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-
-
+</div>
+<div class="container">
 
  {% for post in allposts %}
     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -49,13 +40,34 @@
           <div class="mb-1 text-muted">{{post.timeStamp}}</div>
           <p class="card-text mb-auto">{{post.content| truncatechars:400}}</p>
           <div>
-             <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">Continue reading</a>
+             <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">Know more</a>
           </div>
+
+          {% comment %} here i added like loop {% endcomment %}
+               <div class="d-flex flex-row">
+                    <form method="POST" action="/blog/{{post.slug}}/like">
+                        {% csrf_token %}
+                        <input type="hidden" name="slug" value="{{post.slug}}">
+                        {% comment %} <input type="hidden" name="totalLikes" value="{{post.likes.all.count}}"> {% endcomment %}
+                        {% comment %} <button style="background-color: transparent; border: none; box-shadow: none;" type="submit"><i class="far fa-thumbs-up"></i> <span>{{ post.likes.all.count }}</span></button> {% endcomment %}
+                        <button type="submit" class="btn btn-primary my-2">like-{{ post.likes.all.count }}</button>
+                    </form>
+    
+                    <form method="POST" action="/blog/{{post.slug}}/Dislike">
+                        {% csrf_token %}
+                        <input type="hidden" name="slug" value="{{post.slug}}">
+                        {% comment %} <button style="background-color: transparent; border: none; box-shadow: none;" type="submit"><i class="far fa-thumbs-down"></i> <span>{{ post.dislikes.all.count }}</span></button> {% endcomment %}
+                        <button type="submit" class="btn btn-primary m-2">Dislike-{{ post.dislikes.all.count }}</button>
+                    </form>
+                    votes:  {{post.votes}}
+                   
+               </div>
   
         </div>
         <div class="col-auto d-none d-lg-block">
           {% comment %} <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> {% endcomment %}
           {% video post.video 'tiny' %} 
+          
 
         </div>
       </div>
