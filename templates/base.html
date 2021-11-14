@@ -44,14 +44,33 @@
 
         </ul>
         <form method="get" action="/search" class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" name="query" id="query"
+          <div class="form-outline " >
+           <input class="form-control rounded-0 me-0" type="search" placeholder="Search" name="query" id="query"
             aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          </div>
+          <button class="btn btn-success rounded-0 py-1 px-2" type="submit">
+           <img src="/static/img/search.svg"  width="22" alt="">
+
+          </button> 
+           
+      
+          <!-- <div class="input-group">
+            <div class="form-outline" >
+              <input type="search" class="form-control" name= "query" id="query"  aria-label="Search"/>
+              
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-search"></i>seaarch
+            </button>
+          </div> -->
         </form>
 
         <a href="/admin" target="_blank" class="btn btn-outline-success mx-2">Admin pannel</a>
 
         {% if user.is_authenticated %}
+        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#linkModal">
+            Post Link 
+        </button>    
         {% comment %} Hello, {{request.user}} {% endcomment %}
         <ul class="navbar-nav me-4">
         <li class="nav-item dropdown">
@@ -66,16 +85,17 @@
         </li>
         </ul>
         {% else %}
+        <!-- Button to trigger Link post modal -->
         <!-- Button to trigger Login modal -->
-        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button type="button" class="btn btn-outline-primary mx-1" data-bs-toggle="modal" data-bs-target="#loginModal">
           Login
         </button>
-        <!-- Button to trigger SignUp modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
           SignUp
         </button>
+        <!-- Button to trigger SignUp modal -->
         {% endif %}
-
+        
 
 
 
@@ -110,6 +130,7 @@
 
 
           <form action='/signup' method='post'>
+          {% csrf_token %}
             <div class="mb-3">
               <label for="username" class="form-label">username</label>
               <input type="text" class="form-control" id="username" name="username" aria-describedby="nameHelp"
@@ -141,10 +162,85 @@
                 required>
             </div>
 
-            {% csrf_token %}
+            
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
 
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Link Modal -->
+  <div class="modal fade" id="linkModal" tabindex="-1" aria-labelledby="linkModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="linkModalTitle">share video link</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">      
+            
+          <form method="Post" action="/blog/userPost">
+            {% csrf_token %}
+           <div class="mb-3">
+             <label for="title" class="form-label">Title</label>
+             <input type="text" class="form-control" id="title" name="title" aria-describedby="title" required>
+           </div>
+           
+           <div class="mb-3">
+             <label for="video" class="form-label">video</label>
+             <input type="url" class="form-control" id="video" name="video" aria-describedby="video" required>
+           </div>
+
+          <p>Category of Your video:</p>
+           <div class="row row-cols-3 px-3">
+           <div class="form-check">
+            <input class="form-check-input" value="music" type="radio" name="category" id="category1">
+            <label class="form-check-label" for="category1">
+              Music
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="gaming" type="radio" name="category" id="category2">
+            <label class="form-check-label" for="category2">
+              Gaming
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="live" type="radio" name="category" id="category3">
+            <label class="form-check-label" for="category3">
+              Live
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="sport" type="radio" name="category" id="category4">
+            <label class="form-check-label" for="category4">
+              Sports
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" value="learning" type="radio" name="category" id="category5">
+            <label class="form-check-label" for="category5">
+              Learning
+            </label>
+          </div>
+          <div class="form-check ">
+            <input class="form-check-input" value="uncategorized" type="radio" name="category" id="category6" checked>
+            <label class="form-check-label" for="category6">
+              Uncategorized
+            </label>
+          </div>
+         
+          </div>
+
+           <div class="my-3">
+             <label for="content" class="form-label">Content</label>
+              <textarea class="form-control" name="content" id="content" cols="30" rows="5" required></textarea>
+           </div>
+          
+           <button type="submit" class="btn btn-primary">Submit</button>
+         </form>
 
         </div>
       </div>

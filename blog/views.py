@@ -30,6 +30,17 @@ def blogpost(request,slug):
     comments= BlogComment.objects.filter(post=post)
     context={'post':post, 'comments':comments, 'user':request.user}
     return render(request,'blog/blogpost.html',context)
+    
+
+def categoryblogpost(request,category):
+    allposts=Post.objects.filter(category=category).order_by('-votes')
+    context={'allposts':allposts}
+    return render(request,'blog/category.html',context)
+
+def wishlistview(request):
+    allposts=Post.objects.filter(wishlist = request.user).order_by('-votes')
+    context={'allposts':allposts}
+    return render(request,'blog/wishlistview.html',context)
 
 
 def postComment(request):
@@ -49,17 +60,18 @@ def postComment(request):
 def userPost(request):
     if request.method=="POST":
         title=request.POST.get("title")
+        category=request.POST.get("category")
         video=request.POST.get("video")
         # slug=request.POST.get("slug")
         # slug=request.slug
         content=request.POST.get("content")
         author=request.user
-
+        
         # post= Post(title=title,slug=slug, content=content,author=author)
-        post= Post(title=title,content=content,author=author,video=video)
+        post= Post(title=title,content=content,author=author,video=video,category=category)
 
         post.save()
-        messages.success(request,"comment uploaded")
+        messages.success(request,"Post uploaded")
   
     return redirect(f"/blog/{post.slug}") 
 
@@ -129,5 +141,31 @@ def AddDislike(request,slug):
         post.votes = vote
         post.save() 
         # print( post.votes ) 
+        
+        return redirect(f"/blog/")
+        # if(is_dislike):
+        #     active="primary"
+        # if(not is_dislike):
+        #     active="light"
+
+        # context={'active':active}
+        # return render(request,'/blog/',context)
+
+def Addwishlist(request,slug):
+        post = Post.objects.get(slug=slug)
+        is_wishlist = False
+
+        for wishlist in post.wishlist.all():
+            if wishlist == request.user:
+                is_wishlist = True
+                break
+
+        if not is_wishlist: 
+            post.wishlist.add(request.user)
+        
+        if is_wishlist:
+            post.wishlist.remove(request.user)
+
+     
         
         return redirect(f"/blog/")

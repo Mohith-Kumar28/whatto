@@ -10,6 +10,8 @@ class Post(models.Model):
     video = EmbedVideoField(default='SOME STRING')   
 
     title=models.CharField(max_length=255)
+
+    category=models.CharField(max_length=255,default='uncategorized')
     # author=models.CharField(max_length=14)
     votes=models.IntegerField(default=0)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
@@ -22,6 +24,7 @@ class Post(models.Model):
      
     #  hereee i added likes and dislikes functionality
 
+    wishlist = models.ManyToManyField(User, blank=True, related_name='wishlist')
     likes = models.ManyToManyField(User, blank=True, related_name='likes')
     dislikes = models.ManyToManyField(User, blank=True, related_name='dislikes')
 

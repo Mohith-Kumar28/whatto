@@ -37,7 +37,7 @@ def search(request):
    else:   
        allpostsTitle=Post.objects.filter(title__icontains=query)
        allpostsContent=Post.objects.filter(content__icontains=query)
-       allposts=allpostsTitle.union(allpostsContent)
+       allposts=allpostsTitle.union(allpostsContent).order_by('-votes')
    if allposts.count() == 0:
        messages.warning(request,"No search results found.")
         #  print("too long")

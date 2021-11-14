@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Search results{% endblock title %}
+{% block title %}Category{% endblock title %}
 {% block BlogActive %}active{% endblock BlogActive %}
 {% block body %}
 {% load humanize %}
@@ -8,12 +8,41 @@
      
 
 <div class="container">
- <h3>Search results:</h3>
-     {% if allposts|length < 1 %}
-      <p>no search result</p>
-       your search - <b>{{query}}</b> did not match any videos
-     {% endif %}
- {% for post in allposts %}
+
+  <h3 class="mt-5 mb-4">Shared YouTube videos</h3>
+
+  <ul class="nav nav-pills nav-fill mb-4">
+    {% comment %} <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/category/">Active</a>
+    </li> {% endcomment %}
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/" %}active{% endif %}" href="/blog/">All videos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/category/gaming" %}active{% endif %}" href="/blog/category/gaming">Gaming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/category/music" %}active{% endif %}" href="/blog/category/music">Music</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/category/sport" %}active{% endif %}" href="/blog/category/sport">Sports</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/category/learning" %}active{% endif %}" href="/blog/category/learning">Learning</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/category/live" %}active{% endif %}" href="/blog/category/live">Live</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/category/uncategorized" %}active{% endif %}" href="/blog/category/uncategorized">Uncategorized</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/wishlistview/" %}active{% endif %}" href="/blog/wishlistview"><img src="/static/img/redheart.png" width="14" alt=""> Wishlist</a>
+    </li>
+    
+   </ul>
+
+  {% for post in allposts %}
   <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
  
    <div class="col-auto d-none align-self-center px-3  d-lg-block"> 
