@@ -2,6 +2,7 @@ from django.db.models import query
 from django.http import request
 from django.shortcuts import redirect, render,HttpResponse
 from home.models import Contact
+from home.models import Feedback
 from blog.models import Post
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -97,3 +98,18 @@ def handlelogout(request):
     logout(request)
     messages.success(request, "Successfully logged out")
     return redirect('home')
+
+
+def feedback(request):
+    if request.method=="POST":
+        rating=request.POST.get("range")
+        userfeedback=request.POST.get("userfeedback")
+        user=request.user
+        
+        # post= Post(title=title,slug=slug, content=content,author=author)
+        feedback= Feedback(rating=rating,userfeedback=userfeedback,user=user)
+
+        feedback.save()
+        messages.success(request,"Post uploaded")
+  
+    return redirect('home') 

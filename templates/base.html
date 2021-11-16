@@ -294,6 +294,76 @@
   {% block body %}{% endblock body %}
 
 
+<div class="bg-primary bg-opacity-10">
+<div class="container mt-5">
+  <footer class="pt-5">
+    <div class="row">
+      <div class="col-2">
+        <h5>Section</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-2">
+        <h5>Section</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-2">
+        <h5>Section</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+        </ul>
+      </div>
+
+      <div class="col-4 offset-1">
+        <form method="Post" action="/feedback">
+        {% csrf_token %}
+          <h5>How was your experience with our website</h5>
+          
+          <div class="d-flex-column w-100 gap-2">
+          {% comment %} here i added rating {% endcomment %}
+
+           <label for="customRange3" class="form-label">Your Rating:</label>
+             <input type="range" name="range" class="form-range" min="0" max="5" step="1" id="customRange3" required>
+
+            <label for="feedback" class="form-label">Feedback:</label>
+            <textarea class="form-control" name="userfeedback" placeholder="Any improvements we can do?" id="feedback" cols="30" rows="5" required></textarea>
+            <button class="btn mt-3 btn-primary" type="submit">Send feedback</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between pt-4 mt-4 border-top">
+      <p>© 2021 Company, Inc. All rights reserved.</p>
+      {% comment %} <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+      </ul> {% endcomment %}
+    </div>
+  </footer>
+</div>
+
+</div>
+
+
 
   <!-- Optional JavaScript; choose one of the two! -->
 

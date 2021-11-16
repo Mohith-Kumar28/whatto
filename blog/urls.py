@@ -16,6 +16,8 @@ urlpatterns = [
     path('<int:slug>/wishlist', views.Addwishlist, name='wishlist'),
 
     path('category/<str:category>', views.categoryblogpost, name='category'),
+    path('category/<str:category>/sort/<str:sort>', views.sortcategoryblogpost, name='sortcategory'),
+    path('sort/<str:sort>', views.sortby, name='sort'),
     path('wishlistview/', views.wishlistview, name='wishlistview')
     # path('<str:slug>', views.blogpost, name='home')
 

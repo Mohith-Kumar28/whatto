@@ -1,11 +1,35 @@
 {% extends 'base.html' %}
 
-{% block title %}Category{% endblock title %}
+{% block title %}Sort{% endblock title %}
 {% block BlogActive %}active{% endblock BlogActive %}
 {% block body %}
 {% load humanize %}
 {% load embed_video_tags %}
-     
+
+
+
+<!-- <div class="container my-4">
+
+  <form method="Post" action="/blog/userPost">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" aria-describedby="title" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="video" class="form-label">video</label>
+      <input type="url" class="form-control" id="video" name="video" aria-describedby="video" required>
+    </div>
+    <div class="mb-3">
+      <label for="content" class="form-label">Content</label>
+      <textarea class="form-control" name="content" id="content" cols="30" rows="5" required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div> -->
 
 <div class="container">
 
@@ -44,15 +68,14 @@
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           Sort by
         </button>
-     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="{{request.get_full_path}}/sort/hightolow">hightolow </a></li>
-          <li><a class="dropdown-item" href="{{request.get_full_path}}/sort/lowtohigh">lowtohigh </a></li>
-          <li><a class="dropdown-item" href="{{request.get_full_path}}/sort/newfirst">newfirst </a></li>
-          <li><a class="dropdown-item" href="{{request.get_full_path}}/sort/oldfirst">oldfirst </a></li>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/blog/sort/hightolow">hightolow </a></li>
+          <li><a class="dropdown-item" href="/blog/sort/lowtohigh">lowtohigh </a></li>
+          <li><a class="dropdown-item" href="/blog/sort/newfirst">newfirst </a></li>
+          <li><a class="dropdown-item" href="/blog/sort/oldfirst">oldfirst </a></li>
         </ul>
-         </div>
+      </div>
     </li>
-    
    </ul>
 
   {% for post in allposts %}

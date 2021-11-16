@@ -80,24 +80,66 @@
       <div class="col-md-10 mx-auto col-lg-5 rounded-3 bg-primary bg-opacity-10 shadow-lg py-4">
        
               {% if user.is_authenticated %}
-               <form method="Post" action="/blog/userPost">
-                  {% csrf_token %}
-                 <div class="mb-3">
-                   <label for="title" class="form-label">Title</label>
-                   <input type="text" class="form-control" id="title" name="title" aria-describedby="title" required>
-                 </div>
-  
-                 <div class="mb-3">
-                   <label for="video" class="form-label">video</label>
-                   <input type="url" class="form-control" id="video" name="video" aria-describedby="video" required>
-                 </div>
-                 <div class="mb-3">
-                   <label for="content" class="form-label">Content</label>
-                    <textarea class="form-control" name="content" id="content" cols="30" rows="5" required></textarea>
-                 </div>
- 
-                 <button type="submit" class="btn btn-primary">Submit</button>
-               </form>
+              <form method="Post" action="/blog/userPost">
+                {% csrf_token %}
+               <div class="mb-3">
+                 <label for="title" class="form-label">Title</label>
+                 <input type="text" class="form-control" id="title1" name="title" aria-describedby="title" required>
+               </div>
+               
+               <div class="mb-3">
+                 <label for="video" class="form-label">video</label>
+                 <input type="url" class="form-control" id="video1" name="video" aria-describedby="video" required>
+               </div>
+    
+              <p>Category of Your video:</p>
+               <div class="row row-cols-3 px-3">
+               <div class="form-check">
+                <input class="form-check-input" value="music" type="radio" name="category" id="category7">
+                <label class="form-check-label" for="category7">
+                  Music
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="gaming" type="radio" name="category" id="category8">
+                <label class="form-check-label" for="category8">
+                  Gaming
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="live" type="radio" name="category" id="category9">
+                <label class="form-check-label" for="category9">
+                  Live
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="sport" type="radio" name="category" id="category10">
+                <label class="form-check-label" for="category10">
+                  Sports
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="learning" type="radio" name="category" id="category11">
+                <label class="form-check-label" for="category11">
+                  Learning
+                </label>
+              </div>
+              <div class="form-check ">
+                <input class="form-check-input" value="uncategorized" type="radio" name="category" id="category12" checked>
+                <label class="form-check-label" for="category12">
+                  Uncategorized
+                </label>
+              </div>
+             
+              </div>
+    
+               <div class="my-3">
+                 <label for="content" class="form-label">Content</label>
+                  <textarea class="form-control" name="content" id="content1" cols="30" rows="5" required></textarea>
+               </div>
+              
+               <button type="submit" class="btn btn-primary">Submit</button>
+             </form>
                {% else %}
 
                <img src="/static/img/blur.jpg" width="400" alt="">

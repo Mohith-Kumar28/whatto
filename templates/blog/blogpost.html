@@ -11,13 +11,14 @@
     <h2 class="blog-post-title">{{post.title}}</h2>
     <p class="blog-post-meta">{{post.timeStamp}} <a href="#"> {{post.author.username}}</a></p>
     {% comment %} <p class="blog-post-meta">{{post.timeStamp}} <a href="#"> {{post.author}}</a></p> {% endcomment %}
-
-      {% video post.video 'small' %} 
-    <p>{{post.content}}</p>
-    <hr>
-</div>
-
-<div class="container">
+      <div class="row">
+      <div class="col">
+   
+      {% video post.video 'medium' %} 
+     
+      </div>
+      <div class="col">
+      <div class="container">
   <h2>Comments({{comments.count}})</h2>
   <div class="my-2">
   
@@ -27,14 +28,15 @@
     {% csrf_token %}
     
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Post comment</label>
-      <input type="text" class="form-control" name="comment" placeholder="enter your comment here">
+      {% comment %} <label for="exampleInputEmail1" class="form-label">Post comment</label> {% endcomment %}
+      <input type="text" class="form-control" name="comment" placeholder="enter your comment here" required>
     </div>
    
     <input type="hidden" name="postSno" value="{{post.slug}}">
     {% comment %} <input type="hidden" name="postSno" value="{{post.sno}}"> {% endcomment %}
 
     <button type="submit" class="btn btn-primary">Submit</button>
+    
   </form>
   {% else %}
      First login to post a comment.
@@ -42,11 +44,13 @@
  
 
   </div>
-
+  
+ 
+<div class="container overflow-auto" style="height: 300px" >
   {% for comment in comments %}
   <div class="row my-3">
-   <div class="col-md-1">
-    <img class="rounded mx-auto d-block w-100 p-2" src="/static/img/user.png" alt="user">
+   <div class="col-md-1 px-0">
+    <img class="rounded mt-2 d-block p-0" width=100% src="/static/img/user.png" alt="user">
    </div>
       <div class="col-md-10">
         <b>{{comment.user.username}}</b> at {{comment.timestamp | naturaltime}}
@@ -54,5 +58,19 @@
       </div> 
   </div>
   {% endfor %}
+
+</div>  
+
+ 
+ 
 </div>
+    </div>
+   </div>
+    <h3 class="mt-4">Description</h3>
+    <p>{{post.content}}</p>
+    <hr>
+</div>
+
+
+
 {% endblock body %}

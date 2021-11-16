@@ -63,11 +63,26 @@
     <li class="nav-item">
       <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/wishlistview/" %}active{% endif %}" href="/blog/wishlistview"><img src="/static/img/redheart.png" width="14" alt=""> Wishlist</a>
     </li>
+    <li class="nav-item">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Sort by
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="sort/hightolow">hightolow </a></li>
+          <li><a class="dropdown-item" href="sort/lowtohigh">lowtohigh </a></li>
+          <li><a class="dropdown-item" href="sort/newfirst">newfirst </a></li>
+          <li><a class="dropdown-item" href="sort/oldfirst">oldfirst </a></li>
+        </ul>
+      </div>
+    </li>
     
    </ul>
 
+   
+
   {% for post in allposts %}
-  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+  <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
  
    <div class="col-auto d-none align-self-center px-3  d-lg-block"> 
   

@@ -3,33 +3,96 @@
 {% block title %}contact{% endblock title %}
 {% block ContactActive %} active {% endblock ContactActive %}
 {% block body %}
-<h1>contact us</h1>
+
+{% comment %} <div class="container mt-4">
+  <!--Buttons-->
+  <div class="row text-center">
+    <div class="col-md-4">
+      <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
+      <p> Your Address ….. </p>
+    </div>
+    <div class="col-md-4">
+      <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-phone"></i></a>
+      <p>+91- 90000000</p>
+    </div>
+    <div class="col-md-4">
+      <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-envelope"></i></a>
+      <p> asdf@gmail.com</p>
+    </div>
+  </div>
+</div> {% endcomment %}
 
 
 
-<div class="container">
-<form method="Post" action="/contact">
-   {% csrf_token %}
-  <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" class="form-control" id="name1" name="name" aria-describedby="name">
-    <div id="namehelp" class="form-text">We'll never share your email with anyone else.</div>
+
+
+<section class="container ">
+  <!--Contact heading-->
+  <div class="row py-5">
+
+
+
+
+    <!--Grid column-->
+    <div class="col-sm-12 col-md-7 px-5">
+      <!--Google map-->
+      <div class="mb-4">
+        <img src="/static/img/contact.svg" width=100% alt="">
+      </div>
+
+      <!--Buttons-->
+      <div class="row text-center">
+        <div class="col-md-4">
+          <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><img src="/static/img/location.svg" width="24" alt=""></a>
+          <p> LPU, Punjab </p>
+        </div>
+        <div class="col-md-4">
+          <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><img src="/static/img/phone.svg" width="24" alt=""></a>
+          <p>+91-1824-517000</p>
+        </div>
+        <div class="col-md-4">
+          <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><img src="/static/img/mail.svg" width="24" alt=""></a>
+          <p> LPU@gmail.com</p>
+        </div>
+      </div>
+    </div>
+    <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-10 mx-auto mt-0 col-lg-5 rounded-3 bg-primary bg-opacity-10 shadow-lg px-0 pt-0 pb-4">
+          <div class="card-header p-0">
+            <div class="bg-primary rounded-top text-white text-center py-2">
+              <h3><i class="fa fa-envelope"></i> Write to us:</h3>
+              <p class="m-0">We’ll try our best to resolve your issue.</p>
+            </div>
+    
+          </div>
+          <form method="Post" class="mx-5 pt-3" action="/contact">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name1" name="name" aria-describedby="name">
+              
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email1" name="email" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone number</label>
+              <input type="phone" class="form-control" name="phone" id="phone">
+              <div id="numberhelp" class="form-text">We'll never share your number with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="content" class="form-label">Describe your issue</label>
+              <textarea class="form-control" name="content" id="content1" cols="30" rows="5"></textarea>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="email1" name="email" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="phone" class="form-label">Phone number</label>
-    <input type="phone" class="form-control" name="phone" id="phone">
-  </div>
-  <div class="mb-3">
-    <label for="content" class="form-label">Describe your issue</label>
-     <textarea class="form-control" name="content" id="content1" cols="30" rows="5"></textarea>
-  </div>
- 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</div>
+</section>
+
 {% endblock body %}

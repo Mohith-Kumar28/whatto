@@ -27,7 +27,7 @@ def blogpost(request,slug):
     post=Post.objects.filter(slug=slug).first()
     
     
-    comments= BlogComment.objects.filter(post=post)
+    comments= BlogComment.objects.filter(post=post).order_by('-timestamp')
     context={'post':post, 'comments':comments, 'user':request.user}
     return render(request,'blog/blogpost.html',context)
     
@@ -36,6 +36,30 @@ def categoryblogpost(request,category):
     allposts=Post.objects.filter(category=category).order_by('-votes')
     context={'allposts':allposts}
     return render(request,'blog/category.html',context)
+
+def sortcategoryblogpost(request,sort,category):
+    if sort=="hightolow":
+     allposts=Post.objects.filter(category=category).order_by('-votes')
+    if sort=="lowtohigh":
+     allposts=Post.objects.filter(category=category).order_by('votes')
+    if sort=="newfirst":
+     allposts=Post.objects.filter(category=category).order_by('-timeStamp')
+    if sort=="oldfirst":
+     allposts=Post.objects.filter(category=category).order_by('timeStamp')
+    context={'allposts':allposts}
+    return render(request,'blog/sort.html',context)
+
+def sortby(request,sort):
+    if sort=="hightolow":
+     allposts=Post.objects.all().order_by('-votes')
+    if sort=="lowtohigh":
+     allposts=Post.objects.all().order_by('votes')
+    if sort=="newfirst":
+     allposts=Post.objects.all().order_by('-timeStamp')
+    if sort=="oldfirst":
+     allposts=Post.objects.all().order_by('timeStamp')
+    context={'allposts':allposts}
+    return render(request,'blog/sort.html',context)
 
 def wishlistview(request):
     allposts=Post.objects.filter(wishlist = request.user).order_by('-votes')
@@ -65,6 +89,7 @@ def userPost(request):
         # slug=request.POST.get("slug")
         # slug=request.slug
         content=request.POST.get("content")
+        
         author=request.user
         
         # post= Post(title=title,slug=slug, content=content,author=author)
