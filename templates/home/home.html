@@ -17,7 +17,7 @@
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold lh-1 mb-3">Confused about what to watch on Youtube?</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <p class="lead"> Never get bored again, as you can watch any one from top videos recomended by others or share your favourite YouTube videos.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
           {% comment %} <button type="button" class="btn  btn-primary btn-lg px-4 me-md-2">Primary</button> {% endcomment %}
           <a href="/blog"  class="btn btn-lg btn-outline-primary">Get Started</a>
@@ -35,7 +35,7 @@
       </div>
       <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
         <h1 class="display-4 fw-bold lh-1">Create a new account or login</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
           {% comment %} <a href="/blog"  class="btn btn-outline-primary">Sign Up</a> {% endcomment %}
           {% comment %} <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"> Post a Link</button> {% endcomment %}
@@ -57,7 +57,7 @@
         </ul>
         {% else %}
         <!-- Button to trigger Login modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
           Login
         </button>
         <!-- Button to trigger SignUp modal -->
@@ -75,7 +75,7 @@
     <div class="row align-items-center g-lg-5 py-5">
       <div class="col-lg-7 text-center text-lg-start">
         <h1 class="display-4 fw-bold lh-1 mb-3">Share your favourite videos to others</h1>
-        <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <p class="col-lg-10 lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
       <div class="col-md-10 mx-auto col-lg-5 rounded-3 bg-primary bg-opacity-10 shadow-lg py-4">
        
@@ -83,16 +83,16 @@
               <form method="Post" action="/blog/userPost">
                 {% csrf_token %}
                <div class="mb-3">
-                 <label for="title" class="form-label">Title</label>
+                 <label for="title" class="form-label">Title:</label>
                  <input type="text" class="form-control" id="title1" name="title" aria-describedby="title" required>
                </div>
                
                <div class="mb-3">
-                 <label for="video" class="form-label">video</label>
-                 <input type="url" class="form-control" id="video1" name="video" aria-describedby="video" required>
+                 <label for="video" class="form-label">YouTube video link:</label>
+                 <input type="url" class="form-control" id="video1" name="video" placeholder="example- https://youtu.be/WO2b03Zdu4Q" aria-describedby="video" required>
                </div>
     
-              <p>Category of Your video:</p>
+              <p>Category of video:</p>
                <div class="row row-cols-3 px-3">
                <div class="form-check">
                 <input class="form-check-input" value="music" type="radio" name="category" id="category7">
@@ -134,7 +134,7 @@
               </div>
     
                <div class="my-3">
-                 <label for="content" class="form-label">Content</label>
+                 <label for="content" class="form-label">Description:</label>
                   <textarea class="form-control" name="content" id="content1" cols="30" rows="5" required></textarea>
                </div>
               
@@ -156,9 +156,9 @@
       </div>
       <div class="col-lg-6 p-3 p-lg-5 pt-lg-3">
         <h1 class="display-4 fw-bold lh-1">Watch and comment on trending videos shared by others</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <a href="/blog"  class="btn btn-outline-primary">Post a Link</a>
+          <a href="/blog"  class="btn btn-outline-primary">See recomended videos</a>
           
         </div>
       </div>
@@ -169,7 +169,7 @@
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 bg-primary bg-opacity-25 shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
         <h1 class="display-4 fw-bold lh-1">UpVote/DownVote videos shared by others </h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
           <a href="/blog"  class="btn btn-outline-primary">Trending Videos</a>
           {% comment %} <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold"> Post a Link</button> {% endcomment %}

@@ -9,7 +9,7 @@
 <div class="container">
   <article class="container">
     <h2 class="blog-post-title">{{post.title}}</h2>
-    <p class="blog-post-meta">{{post.timeStamp}} <a href="#"> {{post.author.username}}</a></p>
+    <p class="blog-post-meta">by <b>{{post.author.username}}</b> on {{post.timeStamp}}  </p>
     {% comment %} <p class="blog-post-meta">{{post.timeStamp}} <a href="#"> {{post.author}}</a></p> {% endcomment %}
       <div class="row">
       <div class="col">

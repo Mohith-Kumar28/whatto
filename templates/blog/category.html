@@ -36,12 +36,14 @@
     <li class="nav-item">
       <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/category/uncategorized" %}active{% endif %}" href="/blog/category/uncategorized">Uncategorized</a>
     </li>
+    {% if user.is_authenticated %}
     <li class="nav-item">
       <a class="nav-link rounded-pill {% if request.get_full_path == "/blog/wishlistview/" %}active{% endif %}" href="/blog/wishlistview"><img src="/static/img/redheart.png" width="14" alt=""> Wishlist</a>
     </li>
+    {% endif %}
     <li class="nav-item">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
           Sort by
         </button>
      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -99,7 +101,7 @@
 
     <div class="col p-4 ps-0 pb-1 d-flex flex-column position-static">
        {% comment %} <strong class="d-inline-block mb-2 text-primary">{{post.author}}, {{post.slug}}</strong> {% endcomment %}
-       <p class="text-primary ">Posted by<b> {{post.author}}, {{post.slug}}</b></p>
+       <p class="text-primary ">Posted by<b> {{post.author}}</b></p>
        
       <a href="/blog/{{post.slug}}"><h3 class="mb-0">{{post.title}}</h3></a>
       <div class="mb-1 text-muted">{{post.timeStamp | naturaltime}}</div>
@@ -129,7 +131,7 @@
              {% else %} 
           <button type="button"
             class="btn btn-outline-light rounded-circle  btn-sm  p-0" data-bs-toggle="modal" data-bs-target="#loginModal"><img
-              src="/static/img/arrowdown.svg" width="25" alt=""></button>
+              src="/static/img/whiteheart.png" width="25" alt=""></button>
               
             {% endif %}  
         </form>

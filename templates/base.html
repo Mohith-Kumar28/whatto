@@ -22,7 +22,8 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">whatto</a>
+      {% comment %} <a class="navbar-brand" href="/">whatto</a> {% endcomment %}
+       <a class="navbar-brand" href="/"><img src="/static/img/logo.png" width="190" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -48,8 +49,8 @@
            <input class="form-control rounded-0 me-0" type="search" placeholder="Search" name="query" id="query"
             aria-label="Search">
           </div>
-          <button class="btn btn-success rounded-0 py-1 px-2" type="submit">
-           <img src="/static/img/search.svg"  width="22" alt="">
+          <button class="btn btn-success rounded-0 py-0 px-1" type="submit">
+           <img src="/static/img/searchwhite.png"  width="30" alt="">
 
           </button> 
            
@@ -65,10 +66,12 @@
           </div> -->
         </form>
 
-        <a href="/admin" target="_blank" class="btn btn-outline-success mx-2">Admin pannel</a>
+
+         {% comment %} here i added admin panel {% endcomment %}
+        {% comment %} <a href="/admin" target="_blank" class="btn btn-outline-success mx-2">Admin pannel</a> {% endcomment %}
 
         {% if user.is_authenticated %}
-        <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#linkModal">
+        <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#linkModal">
             Post Link 
         </button>    
         {% comment %} Hello, {{request.user}} {% endcomment %}
@@ -79,6 +82,7 @@
             Hello, {{request.user}}
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/blog/wishlistview">Wishlist</a></li>
             <li><a class="dropdown-item" href="/logout">Logout</a></li>
             
           </ul>
@@ -184,13 +188,13 @@
           <form method="Post" action="/blog/userPost">
             {% csrf_token %}
            <div class="mb-3">
-             <label for="title" class="form-label">Title</label>
+             <label for="title" class="form-label">Title:</label>
              <input type="text" class="form-control" id="title" name="title" aria-describedby="title" required>
            </div>
            
            <div class="mb-3">
-             <label for="video" class="form-label">video</label>
-             <input type="url" class="form-control" id="video" name="video" aria-describedby="video" required>
+             <label for="video" class="form-label">YouTube video link:</label>
+             <input type="url" class="form-control" id="video" placeholder="example- https://youtu.be/WO2b03Zdu4Q" name="video" aria-describedby="video" required>
            </div>
 
           <p>Category of Your video:</p>
@@ -235,7 +239,7 @@
           </div>
 
            <div class="my-3">
-             <label for="content" class="form-label">Content</label>
+             <label for="content" class="form-label">Description:</label>
               <textarea class="form-control" name="content" id="content" cols="30" rows="5" required></textarea>
            </div>
           
@@ -299,35 +303,35 @@
   <footer class="pt-5">
     <div class="row">
       <div class="col-2">
-        <h5>Section</h5>
+        {% comment %} <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
+        </ul> {% endcomment %}
       </div>
 
       <div class="col-2">
-        <h5>Section</h5>
+        {% comment %} <h5>Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
+        </ul> {% endcomment %}
       </div>
 
       <div class="col-2">
-        <h5>Section</h5>
+        <h5>Navigate</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-muted">Home</a></li>
+          <li class="nav-item mb-2"><a href="/about" class="nav-link p-0 text-muted">About</a></li>
+          <li class="nav-item mb-2"><a href="/contact" class="nav-link p-0 text-muted">Contact</a></li>
+          <li class="nav-item mb-2"><a href="/blog" class="nav-link p-0 text-muted">Blog</a></li>
+      
         </ul>
       </div>
 

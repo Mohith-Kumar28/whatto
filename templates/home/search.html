@@ -8,7 +8,7 @@
      
 
 <div class="container">
- <h3>Search results:</h3>
+ <h3 class="my-4">Search results:</h3>
      {% if allposts|length < 1 %}
       <p>no search result</p>
        your search - <b>{{query}}</b> did not match any videos
@@ -57,7 +57,7 @@
 
     <div class="col p-4 ps-0 pb-1 d-flex flex-column position-static">
        {% comment %} <strong class="d-inline-block mb-2 text-primary">{{post.author}}, {{post.slug}}</strong> {% endcomment %}
-       <p class="text-primary ">Posted by<b> {{post.author}}, {{post.slug}}</b></p>
+       <p class="text-primary ">Posted by<b> {{post.author}}</b></p>
        
       <a href="/blog/{{post.slug}}"><h3 class="mb-0">{{post.title}}</h3></a>
       <div class="mb-1 text-muted">{{post.timeStamp | naturaltime}}</div>
